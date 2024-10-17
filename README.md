@@ -11,3 +11,6 @@
 </ul>
 
 ## INSTALAÇÃO:
+1. Crie uma pasta destinada ao repositório;
+2. Abra a pasta com o VS Code ou o Editor de Código Fonte de sua escolha;
+3. Digite este comando no terminal para clonar o projeto: git clone https://github.com/otaviofigueredoalves/portfolio.git
