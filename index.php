@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/akar-icons-fonts"></script>
     <link rel="shortcut icon" href="assets/icons/favicon/favicon.ico" type="image/x-icon">
-    <title>Otavio F.Alves</title>
+    <title>Otavio F. Alves</title>
 </head>
 <body>
     <header class="container">
@@ -19,11 +19,9 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <!-- MENU BURGER ICON -->
         <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-list" id="menu-icon" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
         </svg>
-        <!-- CLOSED MENU ICON -->
         <svg xmlns="http://www.w3.org/2000/svg" id="closed-menu" class="bi bi-x-lg" viewBox="0 0 16 16">
             <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
          </svg>
@@ -32,14 +30,14 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="assets/CV/Otavio Figueredo CV (enUS).pdf" class="button" download>Download CV</a>
+        <a href="assets/CV/curriculo_otavio.pdf" class="button" download>Download CV</a>
     </header>
     <main>
         <section class="hero">
             <div class="container">
-                <div class="otavio-photo"><img src="assets/images/otavio.jpeg" alt="otavio figueredo photo" title="Um rostinho lindo"></div>
+                <div class="otavio-photo"><img src="assets/images/otavio.jpeg" alt="otavio figueredo photo" title="Software Developer"></div>
                 <div class="title">
-                    <h1><span class="subtitle">Front-end Developer</span><span class="to-color">Otavio</span> Figueredo</h1>
+                    <h1><span class="subtitle">FullStack - Developer</span><span class="to-color">Otavio</span> Figueredo</h1>
                 </div>
                 <a href="#about-me" class="arrow-down">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" class="ai ai-CircleChevronDown"><circle cx="12" cy="12" r="10"/><path d="M8 10.5l4 4 4-4"/></svg>
@@ -49,27 +47,77 @@
         <section id="about-me">
             <div class="container">
                 <div class="title">
-                    <h2><span class="subtitle">Who am i?</span>About me</h2>
+                    <h2><span class="subtitle">Who am I?</span>About me</h2>
                 </div>
-                <p>I currently work with technologies like <strong>HTML5</strong>, <strong>CSS3</strong>, <strong>JavaScript</strong>, <strong>React</strong> and <strong>PHP.</strong> I’m building websites that capture the client's attention, management systems, and web applications that optimize processes. I communicate clearly, am always eager to learn, think creatively to solve problems, and take initiative to get things done efficiently. The love for programming and design is what drives me!</p>
+                <p>I currently work with technologies like <strong>PHP</strong>, <strong>Laravel</strong>, <strong>JavaScript</strong>, <strong>Vue</strong>, <strong>Python</strong>, <strong>MySQL</strong>, <strong>HTML5</strong>, and <strong>CSS3</strong>. I build websites that capture the client's attention, management systems, and web applications that optimize processes. I communicate clearly, am always eager to learn, think creatively to solve problems, and take initiative to get things done efficiently. The love for programming and design is what drives me!</p>
             </div>
         </section>
         <section class="skills container">
             <div class="title">
-                <h2><span class="subtitle">Skills</span>Tecnologies</h2>
+                <h2><span class="subtitle">Skills</span>Technologies</h2>
             </div>
             <div class="container">
                 <div class="item item1"><img src="assets/images/Html 5.svg" alt="html5"></div>
                 <div class="item item2"><img src="assets/images/CSS3.svg" alt="css3"></div>
                 <div class="item item3"><img src="assets/images/JavaScript.svg" alt="javascript"></div>
-                <div class="item item4"><img src="assets/images/React.svg" alt="react"></div>
-                <div class="item item5"><img src="assets/images/PHP Logo.svg" alt="php"></div>
+                <div class="item item4"><img src="assets/images/vue.svg" alt="vue"></div>
+                <div class="item item5"><img src="assets/images/php.svg" alt="php"></div>
+                <div class="item item6"><img src="assets/images/mysql.svg" alt="mysql"></div>
+                <div class="item item7"><img src="assets/images/laravel.svg" alt="laravel"></div>
+                <div class="item item8"><img src="assets/images/python.svg" alt="python"></div>
+                <div class="item item9"><img src="assets/images/angular.svg" alt="angular"></div>
+                <div class="item item10"><img src="assets/images/git.svg" alt="git"></div>
             </div>
         </section>
         <section id="projects">
           <div class="title">
               <h2><span class="subtitle">List of</span> Projects</h2>
           </div>
+          <div class="projects-area container">
+            <h3>WebApps</h3>
+            <div class="projects-area-box">
+                <div class="box">
+                    <a href="https://otaviofigueredoalves.github.io/portfolio" target="_blank">
+                        <div class="box-img">
+                            <img src="assets/images/webpagesIMG/projeto_gerador_guias.png" alt="INSS Guides Generator">
+                        </div>
+                    </a>
+                    <div class="box-info">
+                        <h4>INSS Guides Generator</h4>
+                        <p>A desktop application that automates the process of generating INSS tax guides, based on Excel tables for a law firm.</p>
+                        <ul class="technologies">
+                            <li>- Python</li>
+                            <li>- Playwright</li>
+                            <li>- Javascript</li>
+                            <li>- Pandas</li>
+                        </ul>
+                        <div class="buttons">
+                            <a href="https://github.com/JPMS2070/freelance" class="button" target="_blank">Github</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    <a href="https://otaviofigueredoalves.github.io/portfolio" target="_blank">
+                        <div class="box-img">
+                            <img src="assets/images/webpagesIMG/projeto_relatorio_viagem.png" alt="Travel Report Project">
+                        </div>
+                    </a>
+                    <div class="box-info">
+                        <h4>Travel Report Project</h4>
+                        <p>Web application that facilitates travel report completion for drivers in Ibiapina - CE. Includes templates for standard and extra trips.</p>
+                        <ul class="technologies">
+                            <li>- PHP</li>
+                            <li>- DOMPDF</li>
+                            <li>- HTML</li>
+                            <li>- CSS</li>
+                        </ul>
+                        <div class="buttons">
+                            <a href="relatorio-viagem.gt.tc/" class="button" target="_blank">View Website</a>
+                            <a href="https://github.com/otaviofigueredoalves/relatorio-viagem" class="button" target="_blank">Github</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
           <div class="projects-area container">
             <h3>Webpages</h3>
             <div class="projects-area-box">
@@ -81,11 +129,11 @@
                     </a>
                     <div class="box-info">
                         <h4>Portfolio</h4>
-                        <p>Developed by me to storage my projects</p>
+                        <p>Developed by me to showcase my projects.</p>
                         <ul class="technologies">
-                            <li>-HTML5</li>
-                            <li>-CSS3</li>
-                            <li>-JAVASCRIPT</li>
+                            <li>- HTML5</li>
+                            <li>- CSS3</li>
+                            <li>- JAVASCRIPT</li>
                         </ul>
                         <div class="buttons">
                             <a href="https://otaviofigueredoalves.github.io/portfolio" class="button" target="_blank">View Website</a>
@@ -101,11 +149,11 @@
                     </a>
                     <div class="box-info">
                         <h4>Starbucks Page</h4>
-                        <p>Developed by me to training my CSS Grid Knowledge</p>
+                        <p>Developed by me to practice my CSS Grid knowledge.</p>
                         <ul class="technologies">
-                            <li>-HTML5</li>
-                            <li>-CSS3</li>
-                            <li>-JAVASCRIPT</li>
+                            <li>- HTML5</li>
+                            <li>- CSS3</li>
+                            <li>- JAVASCRIPT</li>
                         </ul>
                         <div class="buttons">
                             <a href="https://otaviofigueredoalves.github.io/clone-starbucks/" class="button" target="_blank">View Website</a>
@@ -121,10 +169,10 @@
                     </a>
                     <div class="box-info">
                         <h4>Paladins Page</h4>
-                        <p>Developed by me to training HTML5 & CSS3</p>
+                        <p>Developed by me to practice HTML5 & CSS3.</p>
                         <ul class="technologies">
-                            <li>-HTML5</li>
-                            <li>-CSS3</li>
+                            <li>- HTML5</li>
+                            <li>- CSS3</li>
                         </ul>
                         <div class="buttons">
                             <a href="https://otaviofigueredoalves.github.io/landing-page-paladins/" class="button" target="_blank">View Website</a>
@@ -135,15 +183,15 @@
                 <div class="box">
                     <a href="https://otaviofigueredoalves.github.io/tribute-page-heavenly-band/" target="_blank">
                         <div class="box-img">
-                            <img src="assets/images/webpagesIMG/tribute-project.png" alt="heavenly band tribue image">
+                            <img src="assets/images/webpagesIMG/tribute-project.png" alt="heavenly band tribute image">
                         </div>
                     </a>
                     <div class="box-info">
                         <h4>Heavenly Tribute</h4>
-                        <p>Developed by me to pay tribute to best power metal band </p>
+                        <p>Developed by me as a tribute to one of the best power metal bands.</p>
                         <ul class="technologies">
-                            <li>-HTML5</li>
-                            <li>-CSS3</li>
+                            <li>- HTML5</li>
+                            <li>- CSS3</li>
                         </ul>
                         <div class="buttons">
                             <a href="https://otaviofigueredoalves.github.io/tribute-page-heavenly-band/" class="button" target="_blank">View Website</a>
@@ -157,10 +205,10 @@
         <section class="contacts">
             <div class="container">
                 <div class="title">
-                    <h2><span class="subtitle">Lets work</span> Together</h2>
+                    <h2><span class="subtitle">Let's work</span> Together</h2>
                     <div class="buttons">
-                        <a href="https://mail.google.com/mail/u/1/#sent?compose=new" target="_blank" class="button">otaviofigueredoalves93@gmail.com</a>
-                        <a href="https://wa.me/5588981726835" target="_blank" class="button">+55(88)98172-6835</a>
+                        <a href="mailto:otaviofigueredo.dev@gmail.com" target="_blank" class="button">otaviofigueredo.dev@gmail.com</a>
+                        <a href="https://wa.me/5588981726835" target="_blank" class="button">+55 (88) 98172-6835</a>
                     </div>
                 </div>
             </div>
@@ -175,7 +223,7 @@
                         <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
                     </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/otavio-figueredo-0531a0263/" target="_blank">
+                <a href="https://github.com/otaviofigueredoalves" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-github" id="github" viewBox="0 0 16 16">
                         <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
                     </svg>
