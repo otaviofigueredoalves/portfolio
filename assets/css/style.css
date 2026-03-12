@@ -19,7 +19,7 @@
 
     /* ANIMATION */
     --animation-d: 15s;
-    --quantity: 5;
+    --quantity: 10;
 
     /* TEXT */
     font-size: 62.5%; 
@@ -375,6 +375,21 @@ header a {
 .item5 {
     animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 5) * -1) ;
 }
+.item6 {
+    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 6) * -1) ;
+}
+.item7 {
+    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 7) * -1) ;
+}
+.item8 {
+    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 8) * -1) ;
+}
+.item9 {
+    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 9) * -1) ;
+}
+.item10 {
+    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 10) * -1) ;
+}
 
 
 /* ------ LIST OF PROJECTS ------ */
@@ -429,7 +444,7 @@ header a {
     width: 100%;
     border-radius: 40px 40px 0px 0px;
     object-fit: cover;
-    object-position: 0px 0px;
+    object-position: center;
 }
 
 .box-info {
@@ -540,6 +555,9 @@ footer .social a {
 }
 
 @media (max-width: 550px){
+    .projects-area-box {
+        flex-direction: column !important;
+    }
     .projects-area-box .box{
         min-width: 80vw;
     }
