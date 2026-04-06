@@ -13,23 +13,28 @@ class Router
         try{
             $url = trim($url,'/');
             $parts = $url ? explode('/',$url) : [];
-            // dd($parts);
             $controller_name = $parts[0] ?? 'Home';
-            // dd($controller_name);
             $controller_name = 'App\Controllers\\'. ucfirst($controller_name).'Controller';
-            // dd($controller_name);
+
+            if($controller_name === 'App\Controllers\\AdminController' && !isset($_SESSION['admin_true'])){
+                $this->httpError('notFound');
+                return;
+            }
             if(class_exists($controller_name)){
                 $method = $parts[1] ?? 'index';
 
                 $controller = new $controller_name();
                 
                 if(!method_exists($controller, $method)){
-                    // $this->httpError('notPermission');
+                    $this->httpError('notFound');
                     return;
                 }
                 $params = array_slice($parts,2);
                 // dd($params, $controller);
                 call_user_func_array([$controller,$method],$params);
+            } else {
+                $this->httpError('notFound');
+                return;
             }
         } catch (\Exception $e){
             $this->httpError('notServer', $e->getMessage());

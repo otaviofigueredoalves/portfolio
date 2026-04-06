@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Core\Model;
-use PDOException;
 
 class ProjectModel extends Model
 {
@@ -41,7 +40,6 @@ class ProjectModel extends Model
         LEFT JOIN technologies ON project_technologies.technology_id = technologies.id";
 
         $dados = $this->db->fetchAll($sql);
-
         $projects = [];
 
         foreach($dados as $project){
@@ -66,7 +64,6 @@ class ProjectModel extends Model
                     'nome' => $project['tech_nome']
                 ];
             }
-            // dd($project,$projects,$project_id);
         }
 
         return array_values($projects);
@@ -75,11 +72,41 @@ class ProjectModel extends Model
     public function getAllTechs()
     {
         $sql = "SELECT * FROM technologies";
-
         $data = $this->db->fetchAll($sql);
-
         return $data;
+    }
 
+    public function setProject(array $content)
+    {
+        // dd($content);
+        $sql = "INSERT INTO projects 
+        (nome,descricao,url_github_project,project_img,img_alt,site_link,category) VALUES(
+        :nome, :descricao, :github, :project_img, :img_alt, :site_link, :category
+        )";
 
+        $params = [
+            'nome' => $content['nome'],
+            'descricao' => $content['descricao'],
+            'github' => $content['github'],
+            'project_img' => $content['project_img'],
+            'img_alt' => $content['img_alt'],
+            'site_link' => $content['site_link'],
+            'category' => $content['category'],
+        ];
+
+        $this->db->query($sql, $params);
+        $id_projeto = $this->db->lastInsertId();
+
+        $sql = "INSERT INTO project_technologies (project_id, technology_id) VALUES(:project_id, :technology_id)";
+
+        foreach($content['techs'] as $tech){
+            // dd($content['techs'],$tech);
+            $params_aux = [
+                'project_id' => $id_projeto,
+                'technology_id' => $tech
+            ];
+            // dd($params_aux);
+            $this->db->query($sql,$params_aux);
+        }
     }
 }

@@ -7,7 +7,7 @@ class Request
     public function input($key, $default = NULL)
     {
         if(isset($_POST[$key])){
-            return trim($_POST[$key]);
+            return $_POST[$key];
         }
 
         if(isset($_GET[$key])){
@@ -27,5 +27,18 @@ class Request
     public function all()
     {
         return array_merge($_GET, $_POST);
+    }
+
+    public function getImage()
+    {
+        $img_name = null;
+         if(isset($_FILES['project_img']) && $_FILES['project_img']['error'] === UPLOAD_ERR_OK){
+
+            $img_name = $_FILES['project_img']['name'];
+            $path = __DIR__ . '/../../public/assets/images/projects_img/'. $img_name;
+
+            move_uploaded_file($_FILES['project_img']['tmp_name'], $path);
+        }
+        return $img_name;
     }
 }
