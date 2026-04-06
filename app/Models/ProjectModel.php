@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Core\Model;
-use App\Models\entities\Project;
 use PDOException;
 
 class ProjectModel extends Model
