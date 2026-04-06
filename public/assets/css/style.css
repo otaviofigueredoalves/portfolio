@@ -19,7 +19,7 @@
 
     /* ANIMATION */
     --animation-d: 15s;
-    --quantity: 10;
+    --quantity: 12;
 
     /* TEXT */
     font-size: 62.5%; 
@@ -389,6 +389,13 @@ header a {
 }
 .item10 {
     animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 10) * -1) ;
+}
+
+.item11 {
+    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 11) * -1) ;
+}
+.item12 {
+    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 12) * -1) ;
 }
 
 
