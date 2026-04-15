@@ -1,6 +1,8 @@
 <?php
 namespace App\Core;
 
+use App\Controllers\errors\HttpErrorsController;
+
 abstract class Controller
 {
     protected function view($view, $view_data = [])
@@ -15,5 +17,4 @@ abstract class Controller
         // dd($view_data);
         require_once $view_file;
     }
-    
 }

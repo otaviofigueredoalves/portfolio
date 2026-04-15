@@ -1,4 +1,5 @@
 <?php foreach ($projects as $project): ?>
+
     <div class="box">
         <a href="<?= $project->url_github_project ?>" target="_blank">
             <div class="box-img">
@@ -10,7 +11,7 @@
             <p><?= $project->descricao ?></p>
             <ul class="technologies">
                 <?php foreach ($project->tech_list as $tech): ?>
-                    <li><?= $tech->nome ?></li>
+                    <li>- <?= $tech['nome']?></li>
                 <?php endforeach; ?>
             </ul>
             <?php if ($project->site_link): ?>
