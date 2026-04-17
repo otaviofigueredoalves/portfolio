@@ -6,7 +6,6 @@ use App\Core\Model;
 
 class ProjectModel extends Model
 {
-    private $domain;
     public $id;
     public $nome;
     public $descricao;
@@ -20,7 +19,6 @@ class ProjectModel extends Model
     public function __construct()
     {
         parent::__construct();
-        $this->domain = config('domain');
     }
     public function getAllProjects()
     {
@@ -78,7 +76,6 @@ class ProjectModel extends Model
 
     public function setProject(array $content)
     {
-        // dd($content);
         $sql = "INSERT INTO projects 
         (nome,descricao,url_github_project,project_img,img_alt,site_link,category) VALUES(
         :nome, :descricao, :github, :project_img, :img_alt, :site_link, :category
@@ -100,12 +97,10 @@ class ProjectModel extends Model
         $sql = "INSERT INTO project_technologies (project_id, technology_id) VALUES(:project_id, :technology_id)";
 
         foreach($content['techs'] as $tech){
-            // dd($content['techs'],$tech);
             $params_aux = [
                 'project_id' => $id_projeto,
                 'technology_id' => $tech
             ];
-            // dd($params_aux);
             $this->db->query($sql,$params_aux);
         }
     }

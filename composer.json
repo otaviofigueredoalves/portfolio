@@ -15,5 +15,8 @@
             "email": "117609558+otaviofigueredoalves@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "symfony/http-foundation": "^8.0"
+    }
 }

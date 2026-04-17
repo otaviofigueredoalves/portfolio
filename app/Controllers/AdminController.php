@@ -1,24 +1,21 @@
 <?php
 namespace App\Controllers;
 
-use App\Controllers\errors\HttpErrorsController;
 use App\Core\Controller;
-use App\Core\Request;
 use App\Models\ProjectModel;
+use Exception;
 
 class AdminController extends Controller
 {
     private $model;
-    private $request;
     public function __construct()
     {
         $this->model = new ProjectModel();
-        $this->request = new Request();
     }
     public function index()
     {
         if(!isset($_SESSION['admin_true'])){
-            header("Location: " . BASE_URL . "/home");
+            $this->redirect('/');
             exit;
         }
 
@@ -31,21 +28,30 @@ class AdminController extends Controller
 
     public function register()
     {
-        $img_name = $this->request->getImage();
-        
+        $img_file = $this->request->files->get('project_img');
+        $img_banco = '';
+
+        if($img_file && $img_file->isValid()){
+            $extension = $img_file->guessExtension();
+            $img_banco = \uniqid('projeto_') . '.' . $extension;
+            $path = __DIR__ . '/../../public/assets/images/projects_img/';
+            $img_file->move($path, $img_banco);
+        } else {
+            throw new Exception("Você precisa enviar uma imagem válida");
+        }
         $project_content = [
-            'nome' => $this->request->input('nome'),
-            'descricao' => $this->request->input('descricao'),
-            'github' => $this->request->input('url_github_project'),
-            'project_img' => $img_name,
-            'img_alt' => $this->request->input('img_alt'),
-            'site_link' => $this->request->input('site_link'),
-            'category' => $this->request->input('category'),
-            'techs' => $this->request->input('techs')
+            'nome' => $this->request->request->get('nome'),
+            'descricao' => $this->request->request->get('descricao'),
+            'github' => $this->request->request->get('url_github_project'),
+            'project_img' => $img_banco,
+            'img_alt' => $this->request->request->get('img_alt'),
+            'site_link' => $this->request->request->get('site_link'),
+            'category' => $this->request->request->get('category'),
+            'techs' => $this->request->request->get('techs')
         ];
 
         $this->model->setProject($project_content);
-        header("Location: " . BASE_URL . "/admin");
+        $this->redirect('/admin');
         exit;
     }
 }

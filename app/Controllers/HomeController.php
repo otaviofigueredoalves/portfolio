@@ -2,9 +2,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Core\Request;
 use App\Models\ProjectModel;
-use Exception;
 
 class HomeController extends Controller
 {
@@ -32,6 +30,5 @@ class HomeController extends Controller
             'techs' => $dados_tech
         ]);   
     }
-    
     
 }

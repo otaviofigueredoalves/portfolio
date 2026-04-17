@@ -2,15 +2,16 @@
 namespace App\Core;
 
 use App\Controllers\errors\HttpErrorsController;
-use App\Controllers\HomeController;
-use App\Traits\LoggerTrait;
+use Symfony\Component\HttpFoundation\Request;
 use Exception;
+
 
 class Router
 {
-    public function dispatch($url)
+    public function dispatch(Request $request) : void
     {
         try{
+            $url = $request->getPathInfo() ?? '';
             $url = trim($url,'/');
             $parts = $url ? explode('/',$url) : [];
             $controller_name = $parts[0] ?? 'Home';
@@ -24,13 +25,13 @@ class Router
                 $method = $parts[1] ?? 'index';
 
                 $controller = new $controller_name();
+                $this->wireRequest($controller, $request);
                 
                 if(!method_exists($controller, $method)){
                     $this->httpError('notFound');
                     return;
                 }
                 $params = array_slice($parts,2);
-                // dd($params, $controller);
                 call_user_func_array([$controller,$method],$params);
             } else {
                 $this->httpError('notFound');
@@ -44,11 +45,18 @@ class Router
     private function httpError($error, $error_message = NULL)
     {
         $controller = new HttpErrorsController();
-        /** Pra economizar RAM, é melhor usar o debug_backtrace com o parâmetro DEBUG_BACKTRACE_IGNORE_ARGS,2, pois o debug_backtrace() faz um raio x completo de tudo que está rodando naquele milissegundo, o que acaba se tornando pesado em ambiente em produção. */
         $trace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS,2);
         $linha = $trace[0]['line'];
-        // dd($trace);
         $error_message = "ROTA: $error_message | " . "LINHA: ". $linha;
         $controller->$error($error_message);
+    }
+
+    /**
+     * Se object controller for instância do Controller, enviamos a instância request pro controller pai
+     */
+    private function wireRequest(object $controller, Request $request){
+        if($controller instanceof Controller){
+            $controller->setRequest($request);
+        }
     }
 }
