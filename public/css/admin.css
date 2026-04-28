@@ -1,0 +1,26 @@
+body {
+            font-family: 'Roboto Mono', system-ui;
+            background-color: #282131;
+        }
+        h1, h2, h3, h4, .navbar-brand {
+            font-family: 'Literata', system-ui;
+        }
+        .btn-custom {
+            background-color: #716087;
+            color: #F9F9F9;
+            border-radius: 20px;
+            padding: 10px 30px;
+            border: 1px solid #716087;
+            transition: all 0.2s ease-in-out;
+        }
+        .btn-custom:hover {
+            background-color: #F9F9F9;
+            color: #282131;
+            transform: scale(0.95);
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+        }

@@ -95,7 +95,6 @@ class ProjectModel extends Model
         $id_projeto = $this->db->lastInsertId();
 
         $sql = "INSERT INTO project_technologies (project_id, technology_id) VALUES(:project_id, :technology_id)";
-
         foreach($content['techs'] as $tech){
             $params_aux = [
                 'project_id' => $id_projeto,
@@ -103,5 +102,115 @@ class ProjectModel extends Model
             ];
             $this->db->query($sql,$params_aux);
         }
+    }
+
+    public function updateProject(array $content)
+    {
+        $sql_d = "DELETE FROM project_technologies WHERE project_id = :id";
+        $params = [ 
+            'id' => $content['id']
+        ];
+
+        $this->db->query($sql_d, $params);
+        
+        $sql_upd = "UPDATE projects SET
+        nome = :nome,
+        descricao = :descricao,
+        url_github_project = :github,
+        project_img = :project_img,
+        img_alt = :img_alt,
+        site_link = :site_link,
+        category = :category
+        WHERE id=:id
+        ";
+
+        $params_upd = [
+            'nome' => $content['nome'],
+            'descricao' => $content['descricao'],
+            'github' => $content['github'],
+            'project_img' => $content['project_img'],
+            'img_alt' => $content['img_alt'],
+            'site_link' => $content['site_link'],
+            'category' => $content['category'],
+            'id' => $content['id']
+        ];
+
+        $this->db->query($sql_upd, $params_upd);
+
+        $sql = "INSERT INTO project_technologies (project_id, technology_id) VALUES(:project_id, :technology_id)";
+        foreach($content['techs'] as $tech){
+            $params_techs = [
+                'project_id' => $content['id'],
+                'technology_id' => $tech
+            ];
+            $this->db->query($sql,$params_techs);
+        }        
+    }
+
+    public function deleteProject(int $id) : void 
+    {
+        $sql = "DELETE FROM projects WHERE id = :id";
+        $params = [
+            'id' => $id
+        ];
+        $this->db->query($sql, $params);
+    }
+
+    public function getProjectById(int $id)
+    {
+        $sql = "SELECT 
+        projects.id,
+        projects.nome,
+        projects.descricao,
+        projects.url_github_project,
+        projects.project_img,
+        projects.img_alt,projects.site_link,
+        projects.category,
+        technologies.id AS tech_id,
+        technologies.nome AS tech_nome
+        FROM projects 
+        LEFT JOIN project_technologies ON projects.id = project_technologies.project_id
+        LEFT JOIN technologies ON technology_id = technologies.id
+        WHERE projects.id=:id"
+        ;
+
+        $params = [
+            'id' => $id
+        ];
+
+        $dados = $this->db->fetchAll($sql, $params);
+        $project_mount = [];
+
+        foreach($dados as $project){
+            $project_id = $project['id'];
+            if(!isset($project_mount[$project_id])){
+                $project_mount[$project_id] = $this->buildProjectObject($project);
+            }
+            
+            if($project['tech_id']){
+                $project_mount[$project_id]->tech_list[] = [
+                    'id' => $project['tech_id'],
+                    'nome' => $project['tech_nome']
+                ];
+            }
+
+        }     
+        $project_mount = array_values($project_mount);
+        return $project_mount[0];
+    }
+
+    private function buildProjectObject($project)
+    {
+        $projectObj = new ProjectModel;
+                $projectObj->id = $project['id'];
+                $projectObj->nome = $project['nome'];
+                $projectObj->descricao = $project['descricao'];
+                $projectObj->url_github_project = $project['url_github_project'];
+                $projectObj->project_img = $project['project_img'];
+                $projectObj->img_alt = $project['img_alt'];
+                $projectObj->site_link = $project['site_link'];
+                $projectObj->category = $project['category'];
+                return $projectObj;
+                
     }
 }
