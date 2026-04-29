@@ -53,7 +53,7 @@ Para permitir que Tech Leads e recrutadores interajam com o sistema sem comprome
 
 Para testar o painel administrativo, utilize as credenciais abaixo:
 *   **Login:** `visitante@guest`
-*   **Senha:** `123456`
+*   **Senha:** `beautifulguest`
 
 *(Atenção: As funções de adicionar, editar ou excluir projetos estarão desabilitadas nesta conta).*
 
