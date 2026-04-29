@@ -1,3 +1,6 @@
+<?php
+/** @var array $projects */
+?>
 <body>
     <main class="container">
         <div class="row justify-content-center">
@@ -6,7 +9,7 @@
                     <input class="btn btn-primary" type="submit" value="+">
                 </form>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <table class="table">
                     <thead>
                         <tr>
@@ -14,6 +17,7 @@
                             <th class="col">NOME PROJETO</th>
                             <th class="col">CATEGORIA</th>
                             <th class="col">AÇÕES</th>
+                            <th class="col">POSIÇÃO</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,6 +30,7 @@
                                     <a class="btn btn-primary" href="<?= BASE_URL . "/admin/edit/$project->id" ?>">Editar</a>
                                     <a class="btn btn-danger" href="<?= BASE_URL . "/admin/drop/$project->id" ?>">Excluir</a>
                                 </td>
+                               <td><?= $project->sort_by ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -35,3 +40,8 @@
     </main>
 </body>
 </html>
+<style>
+    tr,td{
+        text-align: center;
+    }
+</style>

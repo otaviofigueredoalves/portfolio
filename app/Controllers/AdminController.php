@@ -16,9 +16,8 @@ class AdminController extends Controller
     }
     public function index()
     {
-        if(!isset($_SESSION['admin_true'])){
+        if(!isset($_SESSION['guest']) && !isset($_SESSION['admin_true'])){
             $this->redirect('/');
-            exit;
         }
 
         $techs = [
@@ -31,7 +30,6 @@ class AdminController extends Controller
             'techs' => $techs,
             'projects' => $projects
         ];
-        
         $this->view('/auth/header');
         $this->view('/auth/admin',$data);
     }
@@ -52,6 +50,7 @@ class AdminController extends Controller
 
     public function create()
     {
+        $this->checkGuest();
         $project_content = $this->getProjectContent();
         $this->model->setProject($project_content);
         $this->redirect('/admin');
@@ -59,6 +58,7 @@ class AdminController extends Controller
 
     public function drop(int $id)
     {
+        $this->checkGuest();
         $this->model->deleteProject($id);
         $this->redirect('/admin');
     }
@@ -75,7 +75,7 @@ class AdminController extends Controller
         $techs = $this->techs;
         $data = [
             'name_action' => 'Editar',
-            'action' => 'edit',
+            'action' => 'update',
             'project' => $project,
             'techs' => $techs
         ];
@@ -85,7 +85,7 @@ class AdminController extends Controller
 
     public function update(int $id)
     {
-        
+        $this->checkGuest();
         $project_content = $this->getProjectContent($id);
         $this->model->updateProject($project_content);
         $this->redirect('/admin');
@@ -112,9 +112,17 @@ class AdminController extends Controller
             'site_link' => $this->request->request->get('site_link'),
             'category' => $this->request->request->get('category'),
             'techs' => $this->request->request->all('techs'),
-            'id' => $id ?? null
+            'id' => $id ?? null,
+            'sort_by' => $this->request->request->get('sort_by')
         ];
 
         return $project_content;
+    }
+
+    private function checkGuest()
+    {
+        if(isset($_SESSION['guest'])){
+            throw new Exception("Você não tem permissão pra criar um projeto!");
+        }
     }
 }

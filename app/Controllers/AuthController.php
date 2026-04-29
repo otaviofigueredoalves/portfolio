@@ -13,7 +13,7 @@ class AuthController extends Controller
     }
     public function index()
     {
-        if(!isset($_SESSION['admin_true'])){
+        if(!isset($_SESSION['admin_true']) && !isset($_SESSION['guest'])){
             $this->view('/auth/login');
         } else {
             $this->redirect('/admin');
@@ -29,12 +29,14 @@ class AuthController extends Controller
         ];
 
         $result = $this->modelAdmin->checkUser($data);
-
         if($result && \password_verify($data['password'],$result['password'])){
-            $_SESSION['admin_true'] = $result['nome'];
+            if($data['name'] === 'visitante@guest'){
+                $_SESSION['guest'] = $result['nome'];
+            } else {
+                $_SESSION['admin_true'] = $result['nome'];
+            }
             session_regenerate_id(true);
             $this->redirect('/admin');
-            exit;
         } else {
             header("Location: " . BASE_URL . "/error404");
             exit;

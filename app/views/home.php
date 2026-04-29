@@ -1,4 +1,6 @@
-
+<?php 
+/** @var array $view_data */
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +35,7 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="assets/CV/curriculo_otavio.pdf" class="button" download>Download CV</a>
+        <a href="assets/curriculo/curriculo_otavio_ptbr.pdf" class="button" download>Download CV</a>
     </header>
     <main>
         <section class="hero">
