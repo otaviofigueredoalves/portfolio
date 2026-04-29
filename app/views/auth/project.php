@@ -1,3 +1,9 @@
+<?php
+/** @var string $name_action */
+/** @var string $action */
+/** @var object $project */
+/** @var array $techs */
+?>
 <div class="container py-1 d-flex justify-content-center">
     <div class="col-12 col-lg-8">
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -71,10 +77,16 @@
                     </div>
                     <div class="form-text text-secondary">Selecione todas as tecnologias que você usou.</div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="alt_text" class="form-label">Texto alternativo da capa</label>
+                        <input type="text" class="form-control" id="alt_text" value="<?= $project->img_alt ?>" name="img_alt" placeholder="Ex: Imagem do projeto X">
+                    </div>
 
-                <div class="col-md-6 mb-3">
-                    <label for="alt_text" class="form-label">Texto alternativo da capa</label>
-                    <input type="text" class="form-control" id="alt_text" value="<?= $project->img_alt ?>" name="img_alt" placeholder="Ex: Imagem do projeto X">
+                    <div class="col-md-6 mb-3">
+                        <label for="sort_by" class="form-label">Posição</label>
+                        <input type="number" class="form-control" value="<?= $project->sort_by ?? '1' ?>" id="sort_by" name="sort_by" placeholder="1, 2, 3...">
+                    </div>
                 </div>
 
                 <div class="mb-4">

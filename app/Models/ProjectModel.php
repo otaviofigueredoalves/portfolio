@@ -6,15 +6,16 @@ use App\Core\Model;
 
 class ProjectModel extends Model
 {
-    public $id;
-    public $nome;
-    public $descricao;
-    public $url_github_project = NULL;
-    public $project_img;
-    public $img_alt;
-    public $site_link = NULL;
-    public $tech_list = [];
-    public $category;
+    public int $id;
+    public string $nome;
+    public string $descricao;
+    public string $url_github_project = '';
+    public string $project_img;
+    public string $img_alt;
+    public string $site_link = '';
+    public array $tech_list = [];
+    public string $category;
+    public int $sort_by;
 
     public function __construct()
     {
@@ -31,11 +32,13 @@ class ProjectModel extends Model
         projects.img_alt,
         projects.site_link,
         projects.category,
+        projects.sort_by,
         technologies.id AS tech_id,
         technologies.nome AS tech_nome
         FROM projects
         LEFT JOIN project_technologies ON projects.id = project_technologies.project_id
-        LEFT JOIN technologies ON project_technologies.technology_id = technologies.id";
+        LEFT JOIN technologies ON project_technologies.technology_id = technologies.id
+        ORDER BY projects.sort_by ASC, projects.id DESC";
 
         $dados = $this->db->fetchAll($sql);
         $projects = [];
@@ -53,6 +56,7 @@ class ProjectModel extends Model
                 $projectObj->img_alt = $project['img_alt'];
                 $projectObj->site_link = $project['site_link'];
                 $projectObj->category = $project['category'];
+                $projectObj->sort_by = $project['sort_by'];
                 $projects[$project_id] = $projectObj;
             }
 
@@ -77,8 +81,8 @@ class ProjectModel extends Model
     public function setProject(array $content)
     {
         $sql = "INSERT INTO projects 
-        (nome,descricao,url_github_project,project_img,img_alt,site_link,category) VALUES(
-        :nome, :descricao, :github, :project_img, :img_alt, :site_link, :category
+        (nome,descricao,url_github_project,project_img,img_alt,site_link,category,sort_by) VALUES(
+        :nome, :descricao, :github, :project_img, :img_alt, :site_link, :category, :sort_by
         )";
 
         $params = [
@@ -89,6 +93,7 @@ class ProjectModel extends Model
             'img_alt' => $content['img_alt'],
             'site_link' => $content['site_link'],
             'category' => $content['category'],
+            'sort_by' => $content['sort_by']
         ];
 
         $this->db->query($sql, $params);
@@ -120,7 +125,8 @@ class ProjectModel extends Model
         project_img = :project_img,
         img_alt = :img_alt,
         site_link = :site_link,
-        category = :category
+        category = :category,
+        sort_by = :sort_by
         WHERE id=:id
         ";
 
@@ -132,7 +138,8 @@ class ProjectModel extends Model
             'img_alt' => $content['img_alt'],
             'site_link' => $content['site_link'],
             'category' => $content['category'],
-            'id' => $content['id']
+            'id' => $content['id'],
+            'sort_by' => $content['sort_by'],
         ];
 
         $this->db->query($sql_upd, $params_upd);
@@ -166,6 +173,7 @@ class ProjectModel extends Model
         projects.project_img,
         projects.img_alt,projects.site_link,
         projects.category,
+        projects.sort_by,
         technologies.id AS tech_id,
         technologies.nome AS tech_nome
         FROM projects 
@@ -199,7 +207,7 @@ class ProjectModel extends Model
         return $project_mount[0];
     }
 
-    private function buildProjectObject($project)
+    private function buildProjectObject(array $project)
     {
         $projectObj = new ProjectModel;
                 $projectObj->id = $project['id'];
@@ -210,6 +218,7 @@ class ProjectModel extends Model
                 $projectObj->img_alt = $project['img_alt'];
                 $projectObj->site_link = $project['site_link'];
                 $projectObj->category = $project['category'];
+                $projectObj->sort_by = $project['sort_by'];
                 return $projectObj;
                 
     }

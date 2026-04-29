@@ -17,7 +17,7 @@ class Router
             $controller_name = $parts[0] ?? 'Home';
             $controller_name = 'App\Controllers\\'. ucfirst($controller_name).'Controller';
 
-            if($controller_name === 'App\Controllers\\AdminController' && !isset($_SESSION['admin_true'])){
+            if($controller_name === 'App\Controllers\\AdminController' && !isset($_SESSION['admin_true'])  && !isset($_SESSION['guest'])){
                 $this->httpError('notFound');
                 return;
             }
