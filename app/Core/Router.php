@@ -3,9 +3,6 @@ namespace App\Core;
 
 use App\Controllers\errors\HttpErrorsController;
 use Symfony\Component\HttpFoundation\Request;
-use Exception;
-
-
 class Router
 {
     public function dispatch(Request $request) : void
