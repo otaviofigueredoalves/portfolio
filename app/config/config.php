@@ -1,8 +1,4 @@
 <?php
-$path = __DIR__ . '/../../';
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
-$dotenv->load();
-
 return [
     'domain' => $_ENV['DOMAIN'] ?? 'localhost:8000',
     'database' => [
