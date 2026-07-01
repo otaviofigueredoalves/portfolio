@@ -56,6 +56,32 @@ class AdminController extends Controller
         $this->redirect('/admin');
     }
 
+    public function newTech()
+    {
+        $this->view('/auth/header');
+        $this->view('/auth/tech', []);
+    }
+
+    public function createTech()
+    {
+        $this->checkGuest();
+        $nome = $this->request->request->get('nome');
+        $img_file = $this->request->files->get('tech_icon');
+
+        if ($img_file && $img_file->isValid()) {
+            $originalName = pathinfo($img_file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $img_file->guessExtension();
+            // Para tecnologias o ideal é manter o nome simples, mas vamos garantir que não haja conflitos
+            $img_banco = preg_replace('/[^a-zA-Z0-9_-]/', '_', $originalName) . '_' . \uniqid() . '.' . $extension;
+            $path = __DIR__ . '/../../public/assets/icons/';
+            $img_file->move($path, $img_banco);
+
+            $this->model->setTech($nome, $img_banco);
+        }
+        
+        $this->redirect('/admin');
+    }
+
     public function drop(int $id)
     {
         $this->checkGuest();
