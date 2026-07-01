@@ -43,7 +43,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="site" class="form-label">URL do Site (Opcional)</label>
-                        <input type="url" class="form-control" value="<?= $project->site_link ?>" id="site" name="site_link" placeholder="https://...">
+                        <input type="url" class="form-control" value="<?= $project->site_link ?? '' ?>" id="site" name="site_link" placeholder="https://...">
                     </div>
                 </div>
 
@@ -62,7 +62,7 @@
 
                                         <input class="form-check-input" type="checkbox" name="techs[]" value="<?= $tech['id'] ?>" id="tech_<?= $tech['id'] ?>"
                                             <?php
-                                            foreach ($project->tech_list as $tech_project) {
+                                            foreach ($project->tech_list ?? [] as $tech_project) {
 
                                                 if ($tech_project['id'] == $tech['id']) {
                                                     echo 'checked';
@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="alt_text" class="form-label">Texto alternativo da capa</label>
-                        <input type="text" class="form-control" id="alt_text" value="<?= $project->img_alt ?>" name="img_alt" placeholder="Ex: Imagem do projeto X">
+                        <input type="text" class="form-control" id="alt_text" value="<?= $project->img_alt ?? '' ?>" name="img_alt" placeholder="Ex: Imagem do projeto X">
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -91,11 +91,11 @@
 
                 <div class="mb-4">
                     <label for="imagem" class="form-label">Capa do Projeto</label>
-                    <input type="hidden" name="current_img" value="<?= $project->project_img ?>">
+                    <input type="hidden" name="current_img" value="<?= $project->project_img ?? '' ?>">
                     <input class="form-control" type="file" id="imagem" name="project_img" accept="image/*">
                     <div class="form-text text-secondary">Formatos aceitos: JPG, PNG, WEBP.</div>
                     <div class="form-text text-secondary">
-                        Atual: <strong style="color: #fff;text-decoration: underline"><?= $project->project_img ?></strong>. Deixe em branco para manter.
+                        Atual: <strong style="color: #fff;text-decoration: underline"><?= $project->project_img ?? 'Nenhuma' ?></strong>. Deixe em branco para manter.
                     </div>
                 </div>
 

@@ -4,10 +4,9 @@
 <body>
     <main class="container">
         <div class="row justify-content-center">
-            <div class="btn-criar" style="display:flex; justify-content: end">
-                <form action="<?= BASE_URL ?>/admin/new" method="POST" enctype="multipart/form-data">
-                    <input class="btn btn-primary" type="submit" value="+">
-                </form>
+            <div class="btn-criar d-flex justify-content-end gap-2 mb-3">
+                <a class="btn btn-primary" href="<?= BASE_URL ?>/admin/new">+ Novo Projeto</a>
+                <a class="btn btn-success" href="<?= BASE_URL ?>/admin/newTech">+ Nova Tecnologia</a>
             </div>
             <div class="col-md-10">
                 <table class="table">

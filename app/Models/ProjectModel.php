@@ -78,6 +78,16 @@ class ProjectModel extends Model
         return $data;
     }
 
+    public function setTech(string $nome, string $icon)
+    {
+        $sql = "INSERT INTO technologies (nome, icon) VALUES(:nome, :icon)";
+        $params = [
+            'nome' => $nome,
+            'icon' => $icon
+        ];
+        $this->db->execute($sql, $params);
+    }
+
     public function setProject(array $content)
     {
         $sql = "INSERT INTO projects 
