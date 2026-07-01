@@ -111,7 +111,7 @@ class AdminController extends Controller
             'img_alt' => $this->request->request->get('img_alt'),
             'site_link' => $this->request->request->get('site_link'),
             'category' => $this->request->request->get('category'),
-            'techs' => $this->request->request->all('techs'),
+            'techs' => $this->request->request->all()['techs'] ?? [],
             'id' => $id ?? null,
             'sort_by' => $this->request->request->get('sort_by')
         ];

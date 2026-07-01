@@ -34,7 +34,7 @@ class Router
                 $this->httpError('notFound');
                 return;
             }
-        } catch (\Exception $e){
+        } catch (\Throwable $e){
             $this->httpError('notServer', $e->getMessage());
         }
     }

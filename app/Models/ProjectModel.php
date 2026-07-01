@@ -100,7 +100,7 @@ class ProjectModel extends Model
         $id_projeto = $this->db->lastInsertId();
 
         $sql = "INSERT INTO project_technologies (project_id, technology_id) VALUES(:project_id, :technology_id)";
-        foreach($content['techs'] as $tech){
+        foreach((array)($content['techs'] ?? []) as $tech){
             $params_aux = [
                 'project_id' => $id_projeto,
                 'technology_id' => $tech
@@ -145,7 +145,7 @@ class ProjectModel extends Model
         $this->db->query($sql_upd, $params_upd);
 
         $sql = "INSERT INTO project_technologies (project_id, technology_id) VALUES(:project_id, :technology_id)";
-        foreach($content['techs'] as $tech){
+        foreach((array)($content['techs'] ?? []) as $tech){
             $params_techs = [
                 'project_id' => $content['id'],
                 'technology_id' => $tech
@@ -156,6 +156,12 @@ class ProjectModel extends Model
 
     public function deleteProject(int $id) : void 
     {
+        $sql_d = "DELETE FROM project_technologies WHERE project_id = :id";
+        $params = [
+            'id' => $id
+        ];
+        $this->db->query($sql_d, $params);
+
         $sql = "DELETE FROM projects WHERE id = :id";
         $params = [
             'id' => $id
