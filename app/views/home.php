@@ -11,13 +11,22 @@
     <script src="https://unpkg.com/akar-icons-fonts"></script>
     <link rel="shortcut icon" href="assets/icons/favicon/favicon.ico" type="image/x-icon">
     <title>Otavio F. Alves</title>
+    <style>
+        /* Esconder o widget padrão do Google e a barra superior do Google Translate */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { display: none !important; }
+        .goog-tooltip { display: none !important; }
+        .goog-tooltip:hover { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
+    </style>
 </head>
 
 <body>
     <header class="container">
         <div class="languages">
-            <a href="ptBR.html"><img src="assets/icons/Brazil.svg" alt="brazilian flag"></a>
-            <a href="index.html"><img src="assets/icons/USA.svg" alt="united states flag"></a>
+            <a href="#" onclick="changeLanguage('pt'); return false;"><img src="assets/icons/Brazil.svg" alt="brazilian flag"></a>
+            <a href="#" onclick="changeLanguage('en'); return false;"><img src="assets/icons/USA.svg" alt="united states flag"></a>
         </div>
         <ul class="menu">
             <li><a href="#about-me">About me</a></li>
@@ -122,6 +131,27 @@
             </div>
         </div>
     </footer>
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en,pt', autoDisplay: false}, 'google_translate_element');
+        }
+
+        function changeLanguage(lang) {
+            var selectField = document.querySelector("#google_translate_element select");
+            if(selectField) {
+                for(var i=0; i < selectField.children.length; i++){
+                    var option = selectField.children[i];
+                    if(option.value == lang){
+                        selectField.selectedIndex = i;
+                        selectField.dispatchEvent(new Event('change'));
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="assets/js/script.js"></script>
 </body>
 
