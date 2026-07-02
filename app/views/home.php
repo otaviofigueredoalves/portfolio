@@ -11,18 +11,27 @@
     <script src="https://unpkg.com/akar-icons-fonts"></script>
     <link rel="shortcut icon" href="assets/icons/favicon/favicon.ico" type="image/x-icon">
     <title>Otavio F. Alves</title>
+    <style>
+        /* Esconder o widget padrão do Google e a barra superior do Google Translate */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { display: none !important; }
+        .goog-tooltip { display: none !important; }
+        .goog-tooltip:hover { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; border: none !important; box-shadow: none !important; }
+    </style>
 </head>
 
 <body>
     <header class="container">
         <div class="languages">
-            <a href="ptBR.html"><img src="assets/icons/Brazil.svg" alt="brazilian flag"></a>
-            <a href="index.html"><img src="assets/icons/USA.svg" alt="united states flag"></a>
+            <a href="#" onclick="changeLanguage('pt'); return false;"><img src="assets/icons/Brazil.svg" alt="brazilian flag"></a>
+            <a href="#" onclick="changeLanguage('en'); return false;"><img src="assets/icons/USA.svg" alt="united states flag"></a>
         </div>
         <ul class="menu">
-            <li><a href="#about-me">About me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about-me">Sobre Mim</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contato</a></li>
         </ul>
         <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-list" id="menu-icon" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
@@ -31,18 +40,18 @@
             <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
         </svg>
         <ul class="burgerMenu glass">
-            <li><a href="#about-me">About me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about-me">Sobre Mim</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contato</a></li>
         </ul>
-        <a href="assets/curriculo/curriculo_otavio_ptbr.pdf" class="button" download>Download CV</a>
+        <a href="assets/curriculo/curriculo_otavio_ptbr.pdf" class="button" download>Baixar CV</a>
     </header>
     <main>
         <section class="hero">
             <div class="container">
                 <div class="otavio-photo"><img src="assets/images/otavio.jpeg" alt="otavio figueredo photo" title="Software Developer"></div>
                 <div class="title">
-                    <h1><span class="subtitle">FullStack - Developer</span><span class="to-color">Otavio</span> Figueredo</h1>
+                    <h1><span class="subtitle">Desenvolvedor FullStack</span><span class="to-color">Otavio</span> Figueredo</h1>
                 </div>
                 <a href="#about-me" class="arrow-down">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" class="ai ai-CircleChevronDown">
@@ -55,14 +64,14 @@
         <section id="about-me">
             <div class="container">
                 <div class="title">
-                    <h2><span class="subtitle">Who am I?</span>About me</h2>
+                    <h2><span class="subtitle">Quem sou eu?</span>Sobre Mim</h2>
                 </div>
-                <p>I currently work with technologies like <strong>PHP</strong>, <strong>Laravel</strong>, <strong>JavaScript</strong>, <strong>Vue</strong>, <strong>Python</strong>, <strong>MySQL</strong>, <strong>HTML5</strong>, and <strong>CSS3</strong>. I build websites that capture the client's attention, management systems, and web applications that optimize processes. I communicate clearly, am always eager to learn, think creatively to solve problems, and take initiative to get things done efficiently. The love for programming and design is what drives me!</p>
+                <p>Atualmente trabalho com tecnologias como <strong>PHP</strong>, <strong>Laravel</strong>, <strong>JavaScript</strong>, <strong>Vue</strong>, <strong>Python</strong>, <strong>MySQL</strong>, <strong>HTML5</strong> e <strong>CSS3</strong>. Construo sites que capturam a atenção do cliente, sistemas de gestão e aplicações web que otimizam processos. Me comunico de forma clara, estou sempre ansioso para aprender, penso de forma criativa para resolver problemas e tomo a iniciativa para realizar as tarefas com eficiência. O amor pela programação e pelo design é o que me move!</p>
             </div>
         </section>
         <section class="skills container">
             <div class="title">
-                <h2><span class="subtitle">Skills</span>Technologies</h2>
+                <h2><span class="subtitle">Habilidades</span>Tecnologias</h2>
             </div>
             <div class="container">
                 <?php $techs = $view_data['techs'] ?>
@@ -71,7 +80,7 @@
         </section>
         <section id="projects">
             <div class="title">
-                <h2><span class="subtitle">List of</span> Projects</h2>
+                <h2><span class="subtitle">Lista de</span> Projetos</h2>
             </div>
             <div class="projects-area container">
                 <h3>WebApps</h3>
@@ -91,7 +100,7 @@
         <section class="contacts">
             <div class="container">
                 <div class="title">
-                    <h2><span class="subtitle">Let's work</span> Together</h2>
+                    <h2><span class="subtitle">Vamos trabalhar</span> Juntos</h2>
                     <div class="buttons">
                         <a href="mailto:otaviofigueredo.dev@gmail.com" target="_blank" class="button">otaviofigueredo.dev@gmail.com</a>
                         <a href="https://wa.me/5588981726835" target="_blank" class="button">+55 (88) 98172-6835</a>
@@ -102,7 +111,7 @@
     </main>
     <footer>
         <div class="container">
-            <div class="copy">© Code by Otavio</div>
+            <div class="copy">© Desenvolvido por Otavio</div>
             <div class="social" id="contact">
                 <a href="https://www.linkedin.com/in/otavio-figueredo-0531a0263/" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-linkedin" id="linkedin" viewBox="0 0 16 16">
@@ -122,6 +131,27 @@
             </div>
         </div>
     </footer>
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'pt', includedLanguages: 'en,pt', autoDisplay: false}, 'google_translate_element');
+        }
+
+        function changeLanguage(lang) {
+            var selectField = document.querySelector("#google_translate_element select");
+            if(selectField) {
+                for(var i=0; i < selectField.children.length; i++){
+                    var option = selectField.children[i];
+                    if(option.value == lang){
+                        selectField.selectedIndex = i;
+                        selectField.dispatchEvent(new Event('change'));
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="assets/js/script.js"></script>
 </body>
 
