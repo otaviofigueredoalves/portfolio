@@ -171,6 +171,8 @@ header a {
 }
 
 #closed-menu {
+    position: absolute;
+    top: 35px;
     right: 20px;
     z-index: 2;
 }
@@ -178,11 +180,11 @@ header a {
 #menu-icon,
 #closed-menu {
     display: none;
-    position: absolute;
     width: 30px;
     height: 30px;
     fill: var(--ds-color-text-main);
     cursor: pointer;
+    margin-left: 35px;
 }
 
 #menu-icon {
