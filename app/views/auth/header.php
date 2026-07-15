@@ -6,7 +6,7 @@
     <title>Admin | Portfolio</title>
     
     <link href="<?= BASE_URL ?>/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/design-system.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/design-system.css?v=1.1">
     
     <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASE_URL . '/css/admin.css' ?>">
