@@ -34,7 +34,7 @@
             <li><a href="#projects">Projetos</a></li>
             <li><a href="#contact">Contato</a></li>
         </ul>
-        <a href="assets/curriculo/curriculo_otavio_ptbr.pdf" class="ds-btn ds-btn-outline" download>Baixar CV</a>
+        <a href="assets/curriculo/curriculo_otavio_pt_br.pdf" class="ds-btn ds-btn-outline" download>Baixar CV</a>
         <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-list" id="menu-icon" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
         </svg>
