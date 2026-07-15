@@ -74,8 +74,18 @@
             <div class="title">
                 <h2><span class="subtitle">Habilidades</span>Tecnologias</h2>
             </div>
+            <?php 
+                $all_techs = $view_data['techs'];
+                $half = ceil(count($all_techs) / 2);
+                $techs_row1 = array_slice($all_techs, 0, $half);
+                $techs_row2 = array_slice($all_techs, $half);
+            ?>
             <div class="container">
-                <?php $techs = $view_data['techs'] ?>
+                <?php $techs = $techs_row1; ?>
+                <?php include __DIR__ . '/components/techs.php' ?>
+            </div>
+            <div class="container reverse">
+                <?php $techs = $techs_row2; ?>
                 <?php include __DIR__ . '/components/techs.php' ?>
             </div>
         </section>
