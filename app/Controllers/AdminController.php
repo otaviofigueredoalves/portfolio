@@ -40,7 +40,8 @@ class AdminController extends Controller
         $data = [
             'name_action' => 'Criar',
             'action' => 'create',
-            'techs' => $this->techs
+            'techs' => $this->techs,
+            'categories' => $this->model->getAllCategories()
         ];
 
         $this->view('/auth/header');
@@ -103,7 +104,8 @@ class AdminController extends Controller
             'name_action' => 'Editar',
             'action' => 'update',
             'project' => $project,
-            'techs' => $techs
+            'techs' => $techs,
+            'categories' => $this->model->getAllCategories()
         ];
         $this->view('/auth/header');
         $this->view('/auth/project',$data);
@@ -150,5 +152,92 @@ class AdminController extends Controller
         if(isset($_SESSION['guest'])){
             throw new Exception("Você não tem permissão pra criar um projeto!");
         }
+    }
+
+    // --- TECHNOLOGIES ROUTES ---
+    public function techs()
+    {
+        $data = ['techs' => $this->model->getAllTechs()];
+        $this->view('/auth/header');
+        $this->view('/auth/techs', $data);
+    }
+
+    public function editTech(int $id)
+    {
+        $tech = $this->model->getTechById($id);
+        $data = ['tech' => $tech];
+        $this->view('/auth/header');
+        $this->view('/auth/tech', $data);
+    }
+
+    public function updateTech(int $id)
+    {
+        $this->checkGuest();
+        $nome = $this->request->request->get('nome');
+        $img_file = $this->request->files->get('tech_icon');
+        $img_banco = '';
+
+        if ($img_file && $img_file->isValid()) {
+            $originalName = pathinfo($img_file->getClientOriginalName(), PATHINFO_FILENAME);
+            $extension = $img_file->guessExtension();
+            $img_banco = preg_replace('/[^a-zA-Z0-9_-]/', '_', $originalName) . '_' . \uniqid() . '.' . $extension;
+            $path = __DIR__ . '/../../public/assets/icons/';
+            $img_file->move($path, $img_banco);
+        }
+
+        $this->model->updateTech($id, $nome, $img_banco);
+        $this->redirect('/admin/techs');
+    }
+
+    public function dropTech(int $id)
+    {
+        $this->checkGuest();
+        $this->model->deleteTech($id);
+        $this->redirect('/admin/techs');
+    }
+
+    // --- SECTIONS (CATEGORIES) ROUTES ---
+    public function sections()
+    {
+        $data = ['categories' => $this->model->getAllCategories()];
+        $this->view('/auth/header');
+        $this->view('/auth/sections', $data);
+    }
+
+    public function newSection()
+    {
+        $this->view('/auth/header');
+        $this->view('/auth/section_form', []);
+    }
+
+    public function createSection()
+    {
+        $this->checkGuest();
+        $nome = $this->request->request->get('nome');
+        $this->model->setCategory($nome);
+        $this->redirect('/admin/sections');
+    }
+
+    public function editSection(int $id)
+    {
+        $category = $this->model->getCategoryById($id);
+        $data = ['category' => $category];
+        $this->view('/auth/header');
+        $this->view('/auth/section_form', $data);
+    }
+
+    public function updateSection(int $id)
+    {
+        $this->checkGuest();
+        $nome = $this->request->request->get('nome');
+        $this->model->updateCategory($id, $nome);
+        $this->redirect('/admin/sections');
+    }
+
+    public function dropSection(int $id)
+    {
+        $this->checkGuest();
+        $this->model->deleteCategory($id);
+        $this->redirect('/admin/sections');
     }
 }

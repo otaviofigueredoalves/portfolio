@@ -10,7 +10,7 @@
             <h2><?= ucfirst($name_action) ?> Projeto</h2>
         </div>
 
-        <div class="card glass-card p-4 shadow-lg">
+        <div class="card ds-glass p-4 shadow-lg">
 
             <form action="<?= BASE_URL ?>/admin/<?= $action ?>/<?= $project->id  ?? ''?>" method="POST" enctype="multipart/form-data">
 
@@ -20,12 +20,15 @@
                         <input type="text" class="form-control" value="<?= $project->nome ?? '' ?>" id="nome" name="nome" placeholder="Ex: Webapp brabo" required>
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="categoria" class="form-label">Categoria</label>
+                    <div class="col-md-4">
+                        <label for="categoria" class="form-label">Tipo do Projeto (Seção)</label>
                         <select class="form-select" id="categoria" name="category" required>
-                            <option value="<?= $project->category ?? '' ?>" selected><?= $project->category ?? 'Escolha um tipo...' ?></option>
-                            <option value="webapp">WebApp</option>
-                            <option value="webpage">Webpage</option>
+                            <option value="" disabled <?= !isset($project->category) ? 'selected' : '' ?>>Escolha um tipo...</option>
+                            <?php foreach($categories as $cat): ?>
+                                <option value="<?= $cat['id'] ?>" <?= (isset($project) && $project->category == $cat['id']) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($cat['nome']) ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
@@ -102,7 +105,7 @@
 
                 <div class="d-flex justify-content-end gap-2 mt-4">
                     <button type="reset" class="btn btn-outline-secondary rounded-pill px-4">Limpar</button>
-                    <button type="submit" class="btn btn-custom">Salvar Projeto</button>
+                    <button type="submit" class="btn ds-btn ds-btn-solid">Salvar Projeto</button>
                 </div>
 
             </form>

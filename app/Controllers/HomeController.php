@@ -13,20 +13,26 @@ class HomeController extends Controller
         $dados_projects = $model->getAllProjects();
         $dados_tech = $model->getAllTechs();
 
-        $webapp = [];
-        $webpage = [];
+        $categories = $model->getAllCategories();
+
+        $sections = [];
         
+        foreach($categories as $cat) {
+            $sections[$cat['id']] = [
+                'nome' => $cat['nome'],
+                'projects' => []
+            ];
+        }
+
         foreach($dados_projects as $dado){
-            if($dado->category == 'webapp'){
-                $webapp[] = $dado;
-            } else if($dado->category == 'webpage'){
-                $webpage[] = $dado;
+            $cat_id = $dado->category;
+            if (isset($sections[$cat_id])) {
+                $sections[$cat_id]['projects'][] = $dado;
             }
         }
 
         $this->view('home',[
-            'webapp' => $webapp,
-            'webpage' => $webpage,
+            'sections' => $sections,
             'techs' => $dados_tech
         ]);   
     }
