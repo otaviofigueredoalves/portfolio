@@ -3,6 +3,9 @@
     <div class="box">
         <a href="<?= $project->url_github_project ?>" target="_blank">
             <div class="box-img">
+                <?php if(!empty($project->highlight_tag)): ?>
+                    <div class="ds-badge-special"><?= htmlspecialchars($project->highlight_tag) ?></div>
+                <?php endif; ?>
                 <img src="<?= BASE_URL ?>/assets/images/projects_img/<?= $project->project_img ?>" alt="<?= $project->img_alt ?>">
             </div>
         </a>
