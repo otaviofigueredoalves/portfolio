@@ -15,7 +15,6 @@
     
     /* ANIMATION */
     --animation-d: 15s;
-    --quantity: 12;
 }
 
 /* ------ GLOBAL ------ */
@@ -328,46 +327,6 @@ header a {
     animation-iteration-count: infinite;
    
 }
-
-.item1 {
-    animation-delay: calc(var(--animation-d) / var(--quantity) * (var(--quantity) - 1) * -1) ;
-}
-.item2 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 2) * -1) ;
-}
-.item3 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 3) * -1) ;
-}
-.item4 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 4) * -1) ;
-}
-.item5 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 5) * -1) ;
-}
-.item6 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 6) * -1) ;
-}
-.item7 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 7) * -1) ;
-}
-.item8 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 8) * -1) ;
-}
-.item9 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 9) * -1) ;
-}
-.item10 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 10) * -1) ;
-}
-
-.item11 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 11) * -1) ;
-}
-.item12 {
-    animation-delay: calc(var(--animation-d)  / var(--quantity) * (var(--quantity) - 12) * -1) ;
-}
-
-
 /* ------ LIST OF PROJECTS ------ */
 #projects{
     margin-top: 250px;
