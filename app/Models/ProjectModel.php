@@ -234,8 +234,62 @@ class ProjectModel extends Model
                 $projectObj->img_alt = $project['img_alt'];
                 $projectObj->site_link = $project['site_link'];
                 $projectObj->category = $project['category'];
-                $projectObj->sort_by = $project['sort_by'];
-                return $projectObj;
-                
+        $projectObj->sort_by = $project['sort_by'];
+        return $projectObj;
+    }
+
+    // --- TECHNOLOGIES CRUD COMPLEMENT ---
+    public function getTechById(int $id)
+    {
+        $sql = "SELECT * FROM technologies WHERE id = :id";
+        return $this->db->fetch($sql, ['id' => $id]);
+    }
+
+    public function updateTech(int $id, string $nome, string $icon = '')
+    {
+        if ($icon) {
+            $sql = "UPDATE technologies SET nome = :nome, icon = :icon WHERE id = :id";
+            $this->db->execute($sql, ['id' => $id, 'nome' => $nome, 'icon' => $icon]);
+        } else {
+            $sql = "UPDATE technologies SET nome = :nome WHERE id = :id";
+            $this->db->execute($sql, ['id' => $id, 'nome' => $nome]);
+        }
+    }
+
+    public function deleteTech(int $id)
+    {
+        $this->db->execute("DELETE FROM project_technologies WHERE technology_id = :id", ['id' => $id]);
+        $this->db->execute("DELETE FROM technologies WHERE id = :id", ['id' => $id]);
+    }
+
+    // --- CATEGORIES (SECTIONS) CRUD ---
+    public function getAllCategories()
+    {
+        $sql = "SELECT * FROM categories";
+        return $this->db->fetchAll($sql);
+    }
+
+    public function getCategoryById(int $id)
+    {
+        $sql = "SELECT * FROM categories WHERE id = :id";
+        return $this->db->fetch($sql, ['id' => $id]);
+    }
+
+    public function setCategory(string $nome)
+    {
+        $sql = "INSERT INTO categories (nome) VALUES (:nome)";
+        $this->db->execute($sql, ['nome' => $nome]);
+    }
+
+    public function updateCategory(int $id, string $nome)
+    {
+        $sql = "UPDATE categories SET nome = :nome WHERE id = :id";
+        $this->db->execute($sql, ['id' => $id, 'nome' => $nome]);
+    }
+
+    public function deleteCategory(int $id)
+    {
+        $this->db->execute("UPDATE projects SET category = NULL WHERE category = :id", ['id' => $id]);
+        $this->db->execute("DELETE FROM categories WHERE id = :id", ['id' => $id]);
     }
 }

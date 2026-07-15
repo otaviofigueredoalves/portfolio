@@ -2,21 +2,26 @@
 /** @var array $projects */
 ?>
 <body>
-    <main class="container">
-        <div class="row justify-content-center">
-            <div class="btn-criar d-flex justify-content-end gap-2 mb-3">
-                <a class="btn btn-primary" href="<?= BASE_URL ?>/admin/new">+ Novo Projeto</a>
-                <a class="btn btn-success" href="<?= BASE_URL ?>/admin/newTech">+ Nova Tecnologia</a>
+    <main class="container py-4">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+            <h2 class="mb-3 mb-md-0 text-light">Painel Administrativo</h2>
+            <div class="d-flex gap-2">
+                <a class="btn ds-btn btn-outline-light" href="<?= BASE_URL ?>/admin/sections">Gerenciar Seções</a>
+                <a class="btn ds-btn btn-outline-light" href="<?= BASE_URL ?>/admin/techs">Gerenciar Tecnologias</a>
+                <a class="btn ds-btn ds-btn-solid" href="<?= BASE_URL ?>/admin/new">+ Novo Projeto</a>
             </div>
-            <div class="col-md-10">
-                <table class="table">
+        </div>
+
+        <div class="card ds-glass p-4 shadow-lg">
+            <div class="table-responsive">
+                <table class="table table-dark table-striped mt-3 text-center align-middle">
                     <thead>
                         <tr>
-                            <th class="col">ID</th>
-                            <th class="col">NOME PROJETO</th>
-                            <th class="col">CATEGORIA</th>
-                            <th class="col">AÇÕES</th>
-                            <th class="col">POSIÇÃO</th>
+                            <th>ID</th>
+                            <th>NOME PROJETO</th>
+                            <th>CATEGORIA</th>
+                            <th>AÇÕES</th>
+                            <th>POSIÇÃO</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,12 +31,17 @@
                                 <td><?= $project->nome ?></td>
                                 <td><?= $project->category ?></td>
                                 <td>
-                                    <a class="btn btn-primary" href="<?= BASE_URL . "/admin/edit/$project->id" ?>">Editar</a>
-                                    <a class="btn btn-danger" href="<?= BASE_URL . "/admin/drop/$project->id" ?>">Excluir</a>
+                                    <a class="btn btn-primary btn-sm" href="<?= BASE_URL . "/admin/edit/$project->id" ?>">Editar</a>
+                                    <a class="btn btn-danger btn-sm" href="<?= BASE_URL . "/admin/drop/$project->id" ?>" onclick="return confirm('Tem certeza que deseja excluir este projeto?')">Excluir</a>
                                 </td>
-                               <td><?= $project->sort_by ?></td>
+                                <td><?= $project->sort_by ?></td>
                             </tr>
                         <?php endforeach; ?>
+                        <?php if (empty($projects)): ?>
+                            <tr>
+                                <td colspan="5">Nenhum projeto cadastrado.</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -39,8 +49,3 @@
     </main>
 </body>
 </html>
-<style>
-    tr,td{
-        text-align: center;
-    }
-</style>
