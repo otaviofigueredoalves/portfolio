@@ -308,6 +308,10 @@ header a {
    
 }
 
+.skills .container + .container {
+    margin-top: -20px;
+}
+
 @keyframes scrollleft {
     to {
         left: -200px;
@@ -325,7 +329,10 @@ header a {
     animation-name: scrollleft;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-   
+}
+
+.skills .container.reverse .item {
+    animation-direction: reverse;
 }
 /* ------ LIST OF PROJECTS ------ */
 #projects{
