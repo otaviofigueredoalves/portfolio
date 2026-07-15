@@ -11,19 +11,17 @@
             <p><?= $project->descricao ?></p>
             <ul class="technologies">
                 <?php foreach ($project->tech_list as $tech): ?>
-                    <li>- <?= $tech['nome']?></li>
+                    <li class="tech-badge"><?= $tech['nome']?></li>
                 <?php endforeach; ?>
             </ul>
-            <?php if ($project->site_link): ?>
-                <div class="buttons">
-                    <a href="<?= $project->site_link ?>" class="button" target="_blank">View web</a>
-                </div>
-            <?php endif; ?>
-            <?php if ($project->url_github_project): ?>
-                <div class="buttons">
-                    <a href="<?= $project->url_github_project ?>" class="button" target="_blank">Github</a>
-                </div>
-            <?php endif; ?>
+            <div class="buttons">
+                <?php if ($project->site_link): ?>
+                    <a href="<?= $project->site_link ?>" class="ds-btn ds-btn-outline" target="_blank">View web</a>
+                <?php endif; ?>
+                <?php if ($project->url_github_project): ?>
+                    <a href="<?= $project->url_github_project ?>" class="ds-btn ds-btn-outline" target="_blank">Github</a>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 <?php endforeach; ?>

@@ -8,30 +8,15 @@
 }
 
 /* ------ ROOT ------ */
-
+/* Design Tokens are now centralized in design-system.css */
 :root {
-    /* COLOR */
-    --color1: #F9F9F9;
-    --color2: #282131;
-    --color3: #716087;
-    --color4: #f6f6f6;
-    --color5: #e8e8e8;
-
+    /* Base Font Size (1rem = 10px) - Específico para o frontend */
+    font-size: 62.5%; 
+    
     /* ANIMATION */
     --animation-d: 15s;
     --quantity: 12;
-
-    /* TEXT */
-    font-size: 62.5%; 
-    --subtitle: 5rem;
-    --title: 10rem;
-    --title-sub: 5rem;
-    --sub-title-sub: 3rem;
-    --h3: 4rem;
-    --h4: 3.5rem;
-    --h5: 1.5rem;
 }
-
 
 /* ------ GLOBAL ------ */
 .container {
@@ -45,59 +30,41 @@
     text-align: center;
 }
 .title h2 {
-    font-family: "Literata", system-ui;
+    font-family: var(--ds-font-heading);
     font-weight: 400;
     font-size: 6rem;
    
 }
 .subtitle {
-    font-family: "Roboto Mono", system-ui;
-    font-size: var(--subtitle);
+    font-family: var(--ds-font-body);
+    font-size: var(--ds-size-subtitle);
     display: block;
     font-weight: 300;
 }
 
-.button {
-    display: inline-block;
-    border: 1px solid var(--color2);
-    border-radius: 20px;
-    padding: 20px 40px;
-    transition: all 0.2s ease-in-out;
-}
-.button:hover {
-    background-color: var(--color2);
-    color: var(--color1);
-    transform: scale(0.95);
-}
+/* Button logic migrated to .ds-btn-outline */
 .buttons a {
-    color: var(--color2)
+    color: var(--ds-color-text-main);
 }
 h3::after,
 h3::before {
     content: "";
     display: flex;
     justify-content: space-between;
-    background-color: var(--color2);
+    background-color: var(--ds-color-text-main);
     width: 100%;
     height: 3px;
-    border-radius: 10px;
+    border-radius: var(--ds-radius-sm);
 }
 
-.glass {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border:1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
+/* Glass effect migrated to .ds-glass */
 
 /* ------ BODY ------ */
 body {
-    font-family: "Roboto Mono", system-ui;
-    color: var(--color2);
-    font-size: 1.6rem;
-    background-color: var(--color4);
+    font-family: var(--ds-font-body);
+    color: var(--ds-color-text-main);
+    font-size: var(--ds-size-body);
+    background-color: var(--ds-color-background);
 }
 
 /* ------ HEADER ------ */
@@ -108,7 +75,7 @@ header {
     justify-content: end;
     align-items: center;
     height: 100px;
-    background-color: var(--color4);
+    background-color: var(--ds-color-background);
 }
 header a {
     text-transform: uppercase;
@@ -157,13 +124,13 @@ header a {
     width: 0;
     height: 3px;
     position: absolute;
-    background-color: var(--color3);
+    background-color: var(--ds-color-primary);
     transition: 0.2s ease-in;
     z-index: 9;
 }
 .menu a:hover,
 .burgerMenu a:hover {
-    color: var(--color3);
+    color: var(--ds-color-primary);
     font-weight: 700;
 }
 .menu a:hover:after {
@@ -177,7 +144,7 @@ header a {
     flex-direction: column;
     position: absolute;
     list-style: none;
-    background-color: var(--color5);
+    background-color: var(--ds-color-border);
     width: 100vw;
     height: 100vh;
     right: 0;
@@ -200,7 +167,7 @@ header a {
     display: inline-block;
     padding: 10px 0px;
     width: 100%;
-    font-size: var(--h3);
+    font-size: var(--ds-size-h3);
 }
 
 #closed-menu {
@@ -214,7 +181,7 @@ header a {
     position: absolute;
     width: 30px;
     height: 30px;
-    fill: var(--color2);
+    fill: var(--ds-color-text-main);
     cursor: pointer;
 }
 
@@ -251,12 +218,12 @@ header a {
 }
 
 .hero .title .to-color {
-    color: var(--color3);
+    color: var(--ds-color-primary);
 }
 .hero h1 {
     font-family: "Literata", system-ui;
     font-weight: 400;
-    font-size: var(--title);
+    font-size: var(--ds-size-title);
 }
 
 /* --- ARROW DOWN --- */
@@ -268,15 +235,15 @@ header a {
     z-index: 1;
 }
 .ai.ai-CircleChevronDown {
-    stroke: var(--color2);
+    stroke: var(--ds-color-text-main);
     stroke-width: 1.5;
     width: 38px;
     height: 38px;
     transition: 0.2s;
 }
 .ai.ai-CircleChevronDown:hover {
-    fill: var(--color2);
-    stroke: var(--color1);
+    fill: var(--ds-color-text-main);
+    stroke: var(--ds-color-surface);
 }
 
 @keyframes down {
@@ -299,7 +266,7 @@ header a {
     font-family: "Literata",system-ui;
     text-align: center;
     font-weight: 400;
-    font-size: var(--title);
+    font-size: var(--ds-size-title);
 }
 #about-me p {
     font-size: 3rem;
@@ -319,7 +286,7 @@ header a {
     display: block;
 }
 .skills .subtitle {
-    font-size: var(--subtitle);
+    font-size: var(--ds-size-subtitle);
 }
 .skills .container {
     mask-image: linear-gradient(
@@ -332,8 +299,8 @@ header a {
     background-size: 1rem;
     margin: 40px 50px;
     height: 100px;
-    border-top: 3px solid var(--color5);
-    border-bottom: 3px solid var(--color5);
+    border-top: 3px solid var(--ds-color-border);
+    border-bottom: 3px solid var(--ds-color-border);
     position: relative;
     overflow: hidden;
     z-index: -1;
@@ -414,7 +381,7 @@ header a {
     align-items: center;
     text-align: center;
     gap: 2rem;
-    font-size: var(--h3);
+    font-size: var(--ds-size-h3);
     font-weight: 400;
     margin: 70px 0px 60px 0px;
 }
@@ -424,7 +391,8 @@ header a {
 
 .projects-area-box {
     display: flex;
-    overflow-x: scroll;   
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 20px 0px;
     gap: 20px;
 }
@@ -433,19 +401,19 @@ header a {
 }
 
 .projects-area-box .box {
-    display: grid;
-    min-width: 70vw;
-    border-radius: 40px 40px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 calc(33.333% - 14px);
+    border-radius: var(--ds-radius-card) var(--ds-radius-card) 0px 0px;
 }
 .projects-area-box .box {
-    background-color: var(--color1);
+    background-color: var(--ds-color-surface);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .box .box-img {
     display: flex;
     width: 100%;
-    height: 440px;
-    
+    height: 250px;
 }
 .projects-area-box img {
     width: 100%;
@@ -455,27 +423,45 @@ header a {
 }
 
 .box-info {
-    color: var(--color2);
+    color: var(--ds-color-text-main);
     padding: 20px 40px;
 }
 .box-info h4 {
-    font-size: var(--title-sub);
+    font-size: var(--ds-size-h4);
 }
 .box-info p {
-    font-size: var(--sub-title-sub);
+    font-size: var(--ds-size-body);
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 .box-info ul {
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
     margin-top: 15px;
-    gap: 40px;
+    gap: 8px;
+    padding: 0;
+}
+.tech-badge {
+    font-size: 1.3rem;
+    font-weight: 500;
+    background-color: var(--ds-color-primary);
+    color: var(--ds-color-surface);
+    padding: 5px 12px;
+    border-radius: var(--ds-radius-pill);
 }
 .box-info a {
     text-decoration: none;
 }
 .box-info .buttons {
     margin-top: 25px;
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+.box-info .buttons a {
+    flex: 1;
+    padding: 15px 10px;
 }
 
 /* ------ CONTACTS ------ */
@@ -505,7 +491,7 @@ footer .container {
 footer .social h5{
     margin-bottom: 5px;
     font-weight: 400;
-    font-size: var(--h5);
+    font-size: var(--ds-size-h5);
     text-transform: uppercase;
 }
 footer .social a {
@@ -522,7 +508,7 @@ footer .social a {
 #linkedin:hover,
 #github:hover,
 #instagram:hover {
-    fill: var(--color3);
+    fill: var(--ds-color-primary);
 }
 
 /* ------ MEDIA QUERIES ------*/
@@ -553,11 +539,17 @@ footer .social a {
     } 
 
     .box-info ul {
-        display: block;
+        display: flex;
     }
 
     .box .box-img {
         height: 240px;
+    }
+}
+
+@media (max-width: 992px) {
+    .projects-area-box .box {
+        flex: 0 0 calc(50% - 10px);
     }
 }
 
@@ -566,7 +558,8 @@ footer .social a {
         flex-direction: column !important;
     }
     .projects-area-box .box{
-        min-width: 80vw;
+        width: 100%;
+        flex: 0 0 100%;
     }
     .contacts .buttons a {
         margin: 10px;

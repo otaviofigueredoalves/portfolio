@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* ==========================================================================
+   DESIGN SYSTEM - TOKENS
+   ========================================================================== */
+:root {
+    /* --- COLORS --- */
+    --ds-color-surface: #F9F9F9;
+    --ds-color-text-main: #282131;
+    --ds-color-primary: #716087;
+    --ds-color-background: #f6f6f6;
+    --ds-color-border: #e8e8e8;
+
+    /* --- TYPOGRAPHY --- */
+    --ds-font-heading: 'Literata', system-ui;
+    --ds-font-body: 'Roboto Mono', system-ui;
+    
+    /* Font Scale */
+    --ds-size-title: 10rem;
+    --ds-size-title-sub: 5rem;
+    --ds-size-subtitle: 5rem;
+    --ds-size-sub-title-sub: 3rem;
+    --ds-size-h3: 4rem;
+    --ds-size-h4: 3.5rem;
+    --ds-size-h5: 1.5rem;
+    --ds-size-body: 1.6rem;
+
+    /* --- SPACING & BORDERS --- */
+    --ds-radius-pill: 20px;
+    --ds-radius-card: 40px;
+    --ds-radius-sm: 10px;
+
+    /* --- SHADOWS --- */
+    --ds-shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --ds-shadow-glass-hover: rgba(40, 33, 49, 0.2) 0px 8px 24px;
+    --ds-shadow-card: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* ==========================================================================
+   DESIGN SYSTEM - COMPONENTS
+   ========================================================================== */
+
+/* --- TYPOGRAPHY UTILITIES --- */
+.ds-font-heading {
+    font-family: var(--ds-font-heading);
+}
+.ds-font-body {
+    font-family: var(--ds-font-body);
+}
+
+/* --- BUTTONS --- */
+.ds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ds-radius-pill);
+    padding: 12px 24px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Primary Button (Outline on Front) */
+.ds-btn-outline {
+    border: 1px solid var(--ds-color-text-main);
+    color: var(--ds-color-text-main);
+    background-color: transparent;
+}
+.ds-btn-large {
+    padding: 20px 40px;
+}
+
+.ds-btn-outline:hover {
+    background-color: var(--ds-color-text-main);
+    color: var(--ds-color-surface);
+    transform: scale(0.95);
+}
+
+/* Solid Custom Button (Used in Admin) */
+.ds-btn-solid {
+    background-color: var(--ds-color-primary);
+    color: var(--ds-color-surface);
+    border: 1px solid var(--ds-color-primary);
+}
+
+.ds-btn-solid:hover {
+    background-color: var(--ds-color-surface);
+    color: var(--ds-color-text-main);
+    transform: scale(0.95);
+}
+
+/* --- CARDS & GLASSMORPHISM --- */
+.ds-glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--ds-radius-pill);
+    box-shadow: var(--ds-shadow-glass);
+}
+.ds-glass-hover {
+    box-shadow: var(--ds-shadow-glass-hover);
+}
+
+.ds-card {
+    background-color: var(--ds-color-surface);
+    border-radius: var(--ds-radius-card) var(--ds-radius-card) 0px 0px;
+    box-shadow: var(--ds-shadow-card);
+}

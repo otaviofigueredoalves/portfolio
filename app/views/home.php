@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/design-system.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
     <script src="https://unpkg.com/akar-icons-fonts"></script>
     <link rel="shortcut icon" href="assets/icons/favicon/favicon.ico" type="image/x-icon">
@@ -30,12 +31,12 @@
         <svg xmlns="http://www.w3.org/2000/svg" id="closed-menu" class="bi bi-x-lg" viewBox="0 0 16 16">
             <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
         </svg>
-        <ul class="burgerMenu glass">
-            <li><a href="#about-me">About me</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <ul class="burgerMenu ds-glass">
+            <li><a href="#about-me">Sobre Mim</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#contact">Contato</a></li>
         </ul>
-        <a href="assets/curriculo/curriculo_otavio_ptbr.pdf" class="button" download>Download CV</a>
+        <a href="assets/curriculo/curriculo_otavio_ptbr.pdf" class="ds-btn ds-btn-outline" download>Baixar CV</a>
     </header>
     <main>
         <section class="hero">
@@ -73,28 +74,27 @@
             <div class="title">
                 <h2><span class="subtitle">List of</span> Projects</h2>
             </div>
-            <div class="projects-area container">
-                <h3>WebApps</h3>
-                <div class="projects-area-box">
-                    <?php $projects = $view_data['webapp'] ?>
-                    <?php include __DIR__ . '/components/project_card.php' ?>
-                </div>
-            </div>
-            <div class="projects-area container">
-                <h3>Webpages</h3>
-                <div class="projects-area-box">
-                    <?php $projects = $view_data['webpage'] ?>
-                    <?php include __DIR__ . '/components/project_card.php' ?>
-                </div>
-            </div>
+            
+            <?php foreach($view_data['sections'] as $section): ?>
+                <?php if (!empty($section['projects'])): ?>
+                    <div class="projects-area container">
+                        <h3><?= htmlspecialchars($section['nome']) ?></h3>
+                        <div class="projects-area-box">
+                            <?php $projects = $section['projects']; ?>
+                            <?php include __DIR__ . '/components/project_card.php' ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            
         </section>
         <section class="contacts">
             <div class="container">
                 <div class="title">
-                    <h2><span class="subtitle">Let's work</span> Together</h2>
+                    <h2><span class="subtitle">Vamos trabalhar</span> Juntos</h2>
                     <div class="buttons">
-                        <a href="mailto:otaviofigueredo.dev@gmail.com" target="_blank" class="button">otaviofigueredo.dev@gmail.com</a>
-                        <a href="https://wa.me/5588981726835" target="_blank" class="button">+55 (88) 98172-6835</a>
+                        <a href="mailto:otaviofigueredo.dev@gmail.com" target="_blank" class="ds-btn ds-btn-outline">otaviofigueredo.dev@gmail.com</a>
+                        <a href="https://wa.me/5588981726835" target="_blank" class="ds-btn ds-btn-outline">+55 (88) 98172-6835</a>
                     </div>
                 </div>
             </div>
