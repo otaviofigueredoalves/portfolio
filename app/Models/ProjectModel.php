@@ -15,6 +15,7 @@ class ProjectModel extends Model
     public string $site_link = '';
     public array $tech_list = [];
     public string $category;
+    public ?string $highlight_tag = null;
     public int $sort_by;
 
     public function __construct()
@@ -32,6 +33,7 @@ class ProjectModel extends Model
         projects.img_alt,
         projects.site_link,
         projects.category,
+        projects.highlight_tag,
         projects.sort_by,
         technologies.id AS tech_id,
         technologies.nome AS tech_nome
@@ -56,6 +58,7 @@ class ProjectModel extends Model
                 $projectObj->img_alt = $project['img_alt'];
                 $projectObj->site_link = $project['site_link'];
                 $projectObj->category = $project['category'];
+                $projectObj->highlight_tag = $project['highlight_tag'];
                 $projectObj->sort_by = $project['sort_by'];
                 $projects[$project_id] = $projectObj;
             }
@@ -91,8 +94,8 @@ class ProjectModel extends Model
     public function setProject(array $content)
     {
         $sql = "INSERT INTO projects 
-        (nome,descricao,url_github_project,project_img,img_alt,site_link,category,sort_by) VALUES(
-        :nome, :descricao, :github, :project_img, :img_alt, :site_link, :category, :sort_by
+        (nome,descricao,url_github_project,project_img,img_alt,site_link,category,highlight_tag,sort_by) VALUES(
+        :nome, :descricao, :github, :project_img, :img_alt, :site_link, :category, :highlight_tag, :sort_by
         )";
 
         $params = [
@@ -103,6 +106,7 @@ class ProjectModel extends Model
             'img_alt' => $content['img_alt'],
             'site_link' => $content['site_link'],
             'category' => $content['category'],
+            'highlight_tag' => empty($content['highlight_tag']) ? null : $content['highlight_tag'],
             'sort_by' => $content['sort_by']
         ];
 
@@ -136,6 +140,7 @@ class ProjectModel extends Model
         img_alt = :img_alt,
         site_link = :site_link,
         category = :category,
+        highlight_tag = :highlight_tag,
         sort_by = :sort_by
         WHERE id=:id
         ";
@@ -148,6 +153,7 @@ class ProjectModel extends Model
             'img_alt' => $content['img_alt'],
             'site_link' => $content['site_link'],
             'category' => $content['category'],
+            'highlight_tag' => empty($content['highlight_tag']) ? null : $content['highlight_tag'],
             'id' => $content['id'],
             'sort_by' => $content['sort_by'],
         ];
@@ -189,6 +195,7 @@ class ProjectModel extends Model
         projects.project_img,
         projects.img_alt,projects.site_link,
         projects.category,
+        projects.highlight_tag,
         projects.sort_by,
         technologies.id AS tech_id,
         technologies.nome AS tech_nome
@@ -234,6 +241,7 @@ class ProjectModel extends Model
                 $projectObj->img_alt = $project['img_alt'];
                 $projectObj->site_link = $project['site_link'];
                 $projectObj->category = $project['category'];
+                $projectObj->highlight_tag = $project['highlight_tag'];
         $projectObj->sort_by = $project['sort_by'];
         return $projectObj;
     }

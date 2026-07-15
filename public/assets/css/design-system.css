@@ -109,3 +109,20 @@
     border-radius: var(--ds-radius-card) var(--ds-radius-card) 0px 0px;
     box-shadow: var(--ds-shadow-card);
 }
+
+/* BADGES & TAGS */
+.ds-badge-special {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, var(--ds-color-primary), #bb86fc);
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

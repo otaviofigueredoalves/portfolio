@@ -403,6 +403,7 @@ header a {
 }
 
 .projects-area-box .box {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 0 0 calc(33.333% - 14px);

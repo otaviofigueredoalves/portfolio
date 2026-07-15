@@ -15,13 +15,13 @@
             <form action="<?= BASE_URL ?>/admin/<?= $action ?>/<?= $project->id  ?? ''?>" method="POST" enctype="multipart/form-data">
 
                 <div class="row">
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-4 mb-3">
                         <label for="nome" class="form-label">Nome do Projeto</label>
                         <input type="text" class="form-control" value="<?= $project->nome ?? '' ?>" id="nome" name="nome" placeholder="Ex: Webapp brabo" required>
                     </div>
 
-                    <div class="col-md-4">
-                        <label for="categoria" class="form-label">Tipo do Projeto (Seção)</label>
+                    <div class="col-md-4 mb-3">
+                        <label for="categoria" class="form-label">Seção (Tipo)</label>
                         <select class="form-select" id="categoria" name="category" required>
                             <option value="" disabled <?= !isset($project->category) ? 'selected' : '' ?>>Escolha um tipo...</option>
                             <?php foreach($categories as $cat): ?>
@@ -30,6 +30,11 @@
                                 </option>
                             <?php endforeach; ?>
                         </select>
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label for="highlight_tag" class="form-label">Tag Especial (Opcional)</label>
+                        <input type="text" class="form-control" value="<?= $project->highlight_tag ?? '' ?>" id="highlight_tag" name="highlight_tag" placeholder="Ex: Destaque, Real">
                     </div>
                 </div>
 
