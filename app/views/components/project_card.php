@@ -19,7 +19,7 @@
             </ul>
             <div class="buttons">
                 <?php if ($project->site_link): ?>
-                    <a href="<?= $project->site_link ?>" class="ds-btn ds-btn-outline" target="_blank">View web</a>
+                    <a href="<?= $project->site_link ?>" class="ds-btn ds-btn-outline" target="_blank">Ver site</a>
                 <?php endif; ?>
                 <?php if ($project->url_github_project): ?>
                     <a href="<?= $project->url_github_project ?>" class="ds-btn ds-btn-outline" target="_blank">Github</a>
