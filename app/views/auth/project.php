@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="col-md-4 mb-3">
-                        <label for="highlight_tag" class="form-label">Tag Especial (Opcional)</label>
+                        <label for="highlight_tag" class="form-label">Tag Especial(Opcional)</label>
                         <input type="text" class="form-control" value="<?= $project->highlight_tag ?? '' ?>" id="highlight_tag" name="highlight_tag" placeholder="Ex: Destaque, Real">
                     </div>
                 </div>

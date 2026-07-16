@@ -5,5 +5,6 @@ $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https://' 
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost:8000';
 define('BASE_URL', $protocol . $host);
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../app/Core/helpers.php';
 use App\Core\Bootstrap;
 (new Bootstrap())->run();
