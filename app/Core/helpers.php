@@ -29,3 +29,24 @@ function config($key, $default = NULL){
     }
     return $config[$key] ?? $default;
 }
+
+if (!function_exists('component')) {
+    /**
+     * Helper para renderizar componentes de view, semelhante ao Blade.
+     *
+     * @param string $name Nome do componente (ex: 'home/hero')
+     * @param array $data Variáveis para extrair no escopo do componente
+     * @throws \Exception
+     */
+    function component(string $name, array $data = []): void
+    {
+        extract($data);
+        $component_file = __DIR__ . "/../views/components/{$name}.php";
+        
+        if (!file_exists($component_file)) {
+            throw new \Exception("Component {$name} not found at {$component_file}.");
+        }
+        
+        include $component_file;
+    }
+}
